@@ -9,8 +9,8 @@ cd src
 ./scripts/feeds install -a
 
 # load custom config
-[ -e $CONFIG_FILE ] && mv $CONFIG_FILE ./.config
-
+#[ -e $CONFIG_FILE ] && mv $CONFIG_FILE ./.config && mv $CONFIG_FILE ./.config
+mv /openwrt/devices/ax3600.config ./.config
 # generate config file
 make defconfig
 
