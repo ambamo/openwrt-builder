@@ -1,15 +1,17 @@
-
 version: '2'
 services:
   openwrt-build:
     build:
       context: .
-    image: openwrt-builder
     container_name: openwrt-builder
     environment:
       DEBIAN_FRONTEND: noninteractive
-      TARGET: N1
-      REPO_URL: https://github.com/coolsnowwolf/lede.git
-      REPO_BRANCH: master
+      TARGET: ax3600
+      REPO_URL: https://github.com/rmandrad/openwrt.git
+      REPO_BRANCH: qualcommax-nss-6.1
     volumes:
-      - ~/Downloads/openwrt-firmware:/openwrt/firmware
+      #- ~/openwrtHome/openwrt-firmware:/openwrt/firmware
+      - ./openwrtHome/firmware:/openwrt/firmware
+      #- ./openwrtHome/src:/openwrt/src
+
+
