@@ -3,15 +3,17 @@ services:
   openwrt-build:
     build:
       context: .
+    image: openwrt-builder-ma
     container_name: openwrt-builder
     environment:
       DEBIAN_FRONTEND: noninteractive
       TARGET: ax3600
-      REPO_URL: https://github.com/rmandrad/openwrt.git
-      REPO_BRANCH: qualcommax-nss-6.1
+      #REPO_URL: https://github.com/rmandrad/openwrt.git
+      REPO_URL: https://github.com/bitthief/nss-packages.git
+      REPO_BRANCH: qualcommax-6.1-nss
     volumes:
       #- ~/openwrtHome/openwrt-firmware:/openwrt/firmware
       - ./openwrtHome/firmware:/openwrt/firmware
-      #- ./openwrtHome/src:/openwrt/src
+      - ./openwrtHome/src:/openwrt/src
 
 

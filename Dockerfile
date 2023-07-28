@@ -9,11 +9,15 @@ RUN apt-get install -y sudo build-essential clang flex g++ gawk gettext \
       file wget
 RUN apt-get clean
 
-
-COPY . /openwrt/
-COPY entrypoint.sh /entrypoint.sh
+RUN mkdir /openwrt/scripts
+COPY ./scripts/entrypoint.sh /openwrt/scripts/entrypoint.sh
+COPY ./scripts/build.sh /openwrt/scripts/build.sh
+COPY ./scripts/ax3600.config /openwrt/scripts/ax3600.config
+COPY ./scripts/entrypoint.sh /entrypoint.sh
 RUN mkdir /openwrt/firmware
+RUN mkdir /openwrt/src
 RUN groupadd -r openwrtgrp && useradd -r -g openwrtgrp openwrt
 RUN chown -R openwrt:openwrtgrp /openwrt
 USER openwrt
-CMD [ "/entrypoint.sh" ]
+#CMD [ "/entrypoint.sh" ]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
