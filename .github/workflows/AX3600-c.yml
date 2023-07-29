@@ -6,7 +6,7 @@
 #   ECM patches from Bitthief
 ################################################
 
-name: Build AX3600
+name: Build AX3600 V3
 
 on:
   repository_dispatch:
